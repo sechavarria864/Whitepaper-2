@@ -2459,12 +2459,12 @@ p {
 .solar-hero {
   background: #F4F5F6;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.85fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
   align-items: center;
-  column-gap: clamp(40px, 6vw, 88px);
-  max-width: 1280px;
+  column-gap: clamp(24px, 4vw, 48px);
+  max-width: 1160px;
   margin: 0 auto;
-  padding: clamp(80px, 10vh, 140px) 48px;
+  padding: clamp(64px, 8vh, 110px) 32px;
   overflow-x: hidden;
 }
 
