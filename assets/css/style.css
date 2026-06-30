@@ -2452,20 +2452,14 @@ p {
 }
 
 /* ============================================================
-   SOLAR HERO — styles/css/style.css
-   
-   INSTRUCTIONS:
-   • Remove (or comment out) the entire old .hero { … } block and
-     ALL .hero-* rules from your existing style.css.
-   • Paste this block in their place (keep everything else as-is).
+   SOLAR HERO — FINAL VERSION
+   Replaces the previous solar hero block
    ============================================================ */
 
-/* ── SOLAR HERO SECTION ── */
-/* ── Section wrapper ── */
 .solar-hero {
   background: #F4F5F6;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.85fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.85fr);
   align-items: center;
   column-gap: clamp(40px, 6vw, 88px);
   max-width: 1280px;
@@ -2474,7 +2468,7 @@ p {
   overflow-x: hidden;
 }
 
-/* ── LEFT COLUMN — vertically centered content ── */
+/* LEFT COLUMN */
 .solar-hero__left {
   display: flex;
   flex-direction: column;
@@ -2488,7 +2482,7 @@ p {
   justify-self: end;
 }
 
-/* Pill badge */
+/* Badge */
 .solar-hero__badge {
   display: inline-block;
   background: none;
@@ -2518,7 +2512,7 @@ p {
   font-weight: normal;
 }
 
-/* Yellow highlight */
+/* Highlight */
 .solar-hero__highlight {
   background-color: #F2E519;
   padding: 0.05em 0.18em 0.08em;
@@ -2528,7 +2522,20 @@ p {
   display: inline;
 }
 
-/* CTA button */
+/* Text */
+.solar-hero__text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000000;
+  margin: 0;
+  max-width: 62ch;
+}
+
+.solar-hero__text--bold {
+  font-weight: 700;
+}
+
+/* Button */
 .solar-hero__btn {
   display: inline-block;
   background: #F2E519;
@@ -2558,10 +2565,11 @@ p {
   background: #F2E519;
 }
 
-/* Stats row */
+/* Stats */
 .solar-hero__stats {
   display: flex;
   gap: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .solar-hero__stat-number {
@@ -2577,108 +2585,106 @@ p {
   opacity: 0.8;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   SOLAR HERO — SINGLE IMAGE VERSION
-   - desktop: image sits naturally on the left of the right column
-   - desktop: image matches left column height
-   - mobile: compact image card
-   - no carousel behavior
-   - no overlay text
-───────────────────────────────────────────────────────────── */
-
-/* HERO LAYOUT */
-.solar-hero {
-  align-items: stretch;
-}
-
-.solar-hero__right {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  min-width: 0;
-}
-
-/* RIGHT COLUMN — SINGLE CARD */
+/* RIGHT COLUMN — full image, no cut corner */
 .solar-hero__carousel-outer {
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: visible;
-  clip-path: none;
 }
 
 .solar-hero__carousel-track {
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: stretch;
-  width: 100%;
-  height: 100%;
-  transform: none !important;
-  transition: none !important;
+  justify-content: center;
+  align-items: center;
 }
 
-.solar-hero__slide {
+.solar-hero__slide,
+.solar-hero__slide--single {
+  width: 100%;
+  max-width: 460px;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  clip-path: none;
   position: relative;
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  min-height: 100%;
-  overflow: hidden;
-  align-self: stretch;
-  margin: 0;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 30px),
-    calc(100% - 30px) 100%,
-    0 100%
-  );
-  filter:
-    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.10))
-    drop-shadow(0 1px 3px rgba(0, 0, 0, 0.08));
+  box-shadow: none;
 }
 
-.solar-hero__slide img {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  object-position: center center;
+/* Remove any old decorative corner effects */
+.solar-hero__slide::before,
+.solar-hero__slide::after,
+.solar-hero__slide--single::before,
+.solar-hero__slide--single::after {
+  content: none;
+}
+
+/* Full image always visible */
+.solar-hero__slide img,
+.solar-hero__slide--single img {
   display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.14),
+    0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* REMOVE ALL OLD TEXT / OVERLAY */
-.solar-hero__slide-overlay,
-.solar-hero__slide-label,
-.solar-hero__slide-number,
-.solar-hero__slide-sublabel {
-  display: none !important;
-}
-
-
-/* ── MOBILE (≤767px) ───────────────────────────────────────── */
-@media (max-width: 767px) {
-  body {
-    padding-top: 0;
-  }
-
+/* Tablet */
+@media (max-width: 991px) {
   .solar-hero {
     grid-template-columns: 1fr;
-    padding: 110px 0 0;
-    overflow: visible;
+    row-gap: 3rem;
+    padding: 64px 32px;
   }
 
   .solar-hero__left {
-    padding: 0 24px 32px;
-    align-items: flex-start;
-    text-align: left;
-    margin-left: 0;
     max-width: 100%;
-    gap: 1rem;
+    padding-right: 0;
+    justify-self: start;
+  }
+
+  .solar-hero__carousel-outer {
+    justify-content: flex-start;
+  }
+
+  .solar-hero__slide,
+  .solar-hero__slide--single {
+    max-width: 380px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .solar-hero {
+    padding: 48px 20px;
+    row-gap: 2.25rem;
+  }
+
+  .solar-hero__left {
+    gap: 1.15rem;
   }
 
   .solar-hero__title {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-    text-align: left;
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    line-height: 1.12;
+  }
+
+  .solar-hero__text {
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .solar-hero__btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.95rem 1.2rem;
   }
 
   .solar-hero__btn-full {
@@ -2689,92 +2695,26 @@ p {
     display: inline;
   }
 
-  .solar-hero__divider,
   .solar-hero__stats {
-    display: none;
+    gap: 1.25rem;
   }
 
-  .solar-hero__right {
-    display: block;
+  .solar-hero__stat {
+    min-width: 120px;
   }
 
-  .solar-hero__carousel-outer {
-    height: auto;
-    overflow: visible;
-    padding: 0 24px 24px;
+  .solar-hero__slide,
+  .solar-hero__slide--single {
+    max-width: 100%;
   }
 
-  .solar-hero__carousel-track {
-    display: block;
-    width: 100%;
-    height: auto;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  .solar-hero__slide {
-    width: 100%;
-    max-width: none;
-    height: 280px;
-    min-height: 0;
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(100% - 24px),
-      calc(100% - 24px) 100%,
-      0 100%
-    );
-  }
-
-  .solar-hero__slide img {
-    height: 100%;
-    min-height: 0;
-    object-position: center;
+  .solar-hero__slide img,
+  .solar-hero__slide--single img {
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.12),
+      0 3px 10px rgba(0, 0, 0, 0.07);
   }
 }
-
-
-/* ── TABLET (768–1023px) ───────────────────────────────────── */
-@media (min-width: 768px) and (max-width: 1023px) {
-  body {
-    padding-top: 0;
-  }
-
-  .solar-hero {
-    padding: 56px 0;
-    align-items: stretch;
-  }
-
-  .solar-hero__left {
-    padding-right: 24px;
-  }
-
-  .solar-hero__title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-  }
-
-  .solar-hero__right {
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-start;
-  }
-
-  .solar-hero__carousel-outer,
-  .solar-hero__carousel-track {
-    height: 100%;
-  }
-
-  .solar-hero__slide {
-    width: 100%;
-    max-width: 420px;
-    min-height: 100%;
-  }
-
-  .solar-hero__slide img {
-  object-position: center;
-}
-}
-
 
 /* ============================================================
    SOLARENERGIE SECTION — mirrors .flexibilitaet styles
