@@ -3081,7 +3081,7 @@ p {
 
 /* ── SOLAR FEATURES BAR ── */
 .solar-features {
-  background-color: #001F3F;
+  background-color: #F2E51A;
   padding: 40px 24px;
 }
 
@@ -3094,13 +3094,12 @@ p {
 }
 
 .solar-features__col {
-  border-left: 3px solid #F2E519;
+  border-left: 3px solid #000000;
   padding: 4px 0 4px 20px;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  /* Separator between columns via right border — subtle dark line */
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid #000000;
 }
 
 .solar-features__col:last-child {
@@ -3113,7 +3112,7 @@ p {
   font-weight: normal;
   text-transform: uppercase;
   line-height: 1.15;
-  color: #ffffff;
+  color: #000000;
   margin: 0;
 }
 
@@ -3123,7 +3122,7 @@ p {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0.03em;
-  color: rgba(255, 255, 255, 0.55);
+  color: #000000;
   margin: 0;
   line-height: 1.5;
 }
@@ -3158,7 +3157,6 @@ p {
   .solar-features__sub {
     font-size: 0.75rem;
   }
-
 }
 
 /* ============================================================
