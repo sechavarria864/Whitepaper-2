@@ -55,6 +55,12 @@ body {
   padding-top: 1rem;
 }
 
+@media (max-width: 640px) {
+  body {
+    padding-top: 3rem; /* mobile only */
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;
