@@ -2464,7 +2464,7 @@ p {
    ============================================================ */
 
 .solar-hero {
-  background: #F4F5F6;
+  background: #F2E519;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
   align-items: center;
@@ -2545,7 +2545,7 @@ p {
 /* Button */
 .solar-hero__btn {
   display: inline-block;
-  background: #F2E519;
+  background: #FFFFFF;
   color: #000000;
   font-weight: 700;
   font-size: 0.9375rem;
